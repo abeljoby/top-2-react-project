@@ -120,6 +120,7 @@ function Game() {
             const data = await response.json();
             loadCountries(data);
           } catch (err) {
+            console.log(err);
             setError(err.message);
           } finally {
             setLoading(false);
@@ -130,7 +131,12 @@ function Game() {
     }, []);
 
     if (loading) return <h1>Loading...</h1>;
-    if (error) return <p>Error: {error}</p>;
+    if (error) {
+        setTimeout(() => {
+            setError(null);
+        }, 2000);
+        return <p>Error: Couldn't fetch images from Unsplash API.<br />Fetching presaved images instead...</p>;
+    }
     return (
         <>
         <div className="score"><span>High score: {highScore.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}</span><span>Current score: {score.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}</span></div>
