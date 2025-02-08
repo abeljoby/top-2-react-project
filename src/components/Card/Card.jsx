@@ -1,15 +1,15 @@
 import './index.css'
 
-function Card({name,url}) {
+function Card({name,url,pickCard}) {
     return (
         <div
         className="card"
-        // style={{width: "300px", height: "300px", backgroundColor: "black"}}
+        onClick={() => pickCard(name)}
         >
             <div className="image">
-                <img src={url} alt={"A picture of "+ name} srcset="" />
+                <img src={url} alt={"A picture of "+ name}/>
             </div>
-            <span className="permanent-marker-regular">{name}</span>
+            <span className='playtime-large'>{name}</span>
         </div>
     )
 }

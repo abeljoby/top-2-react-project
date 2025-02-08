@@ -63,3 +63,23 @@ h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 
+@font-face {
+  font-family: 'Playtime';
+  src: url(./assets/fonts/playtime.ttf) format('truetype');
+}
+
+.permanent-marker-regular {
+  font-family: "Permanent Marker", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.playtime {
+  font-family: 'Playtime', sans-serif;
+  /* font-size: larger; */
+}
+
+.playtime-large {
+  font-family: 'Playtime', sans-serif;
+  font-size: large;
+}
