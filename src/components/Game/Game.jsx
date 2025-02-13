@@ -1,16 +1,28 @@
 import './index.css'
 import Card from '../Card/Card'
 import { useState, useEffect } from 'react';
+import Instructions from '../Instructions/Instructions';
+import Result from '../Result/Result';
 
 function Game() {
+    const winScore = 12;
+
     const [score, setScore] = useState(0);
     const [highScore, setHighScore] = useState(0);
+    const [winState, setWinState] = useState(false);
+    const [overState, setOverState] = useState(false);
 
     function addScore() {
-        if(score === highScore) {
-            setHighScore(score+1);
+        if(score == (winScore - 1)) {
+            setWinState(true);
+            setOverState(true);
         }
-        setScore(score+1);
+        else {
+            if(score === highScore) {
+                setHighScore(score+1);
+            }
+            setScore(score+1);
+        }
     }
 
     function resetScore() {
@@ -59,6 +71,7 @@ function Game() {
         if(countries[name]["chosen"] == true) {
             resetScore();
             resetCountries();
+            setOverState(true);
         }
         else {
             countries[name]["chosen"] = true;
@@ -113,7 +126,7 @@ function Game() {
     useEffect(() => {
         const fetchImages = async () => {
           const url =
-            "https://api.unsplash.com/photos/random?client_id=8Py3PO26wYjDoQh5PDcMOrwMXgLbo-AKnL6egWtrO9g&collections=C1O1XujdT7w&count=12";
+            `https://api.unsplash.com/photos/random?client_id=8Py3PO26wYjDoQh5PDcMOrwMXgLbo-AKnL6egWtrO9g&collections=C1O1XujdT7w&count=${winScore}`;
           try {
             const response = await fetch(url);
             if (!response.ok) throw new Error(`Error: ${response.statusText}`);
@@ -144,6 +157,8 @@ function Game() {
             {shuffleArray(Object.keys(countries)).slice(0,6).map((country) => (
                 <Card key={country} name={country} url={countries[country]["url"]} pickCard={pickCard} />
             ))}
+            <Instructions />
+            <Result result={winState} over={overState}/>
         </div>
         </>
     )

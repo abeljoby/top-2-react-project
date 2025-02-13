@@ -1,0 +1,82 @@
+
+.info {
+    display: flex;
+    visibility: hidden;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: fixed;
+    padding: 1rem;
+    box-sizing: border-box;
+    z-index: 2;
+    background-color: white;
+    color: black;
+    max-width: 40rem;
+    width: 90%;
+    max-height: 75%;
+    height: auto;
+    align-self: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    transform-origin: center center;
+    border: solid 1px black;
+    transition: transform 300ms ease-in-out, visibility 300ms ease;
+}
+
+.info-open {
+    visibility: visible;
+    transform: translate(-50%,-50%) scale(1);
+}
+
+.info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    opacity: 0.3;
+}
+.close:hover {
+    opacity: 1;
+}
+.close:before, .close:after {
+    position: absolute;
+    content: ' ';
+    height: 2rem;
+    width: 0.25rem;
+    top: 50%;
+    left: 50%;
+    background-color: #333;
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(0deg); /* Translate ensures centering */
+}
+
+.close::before {
+    transform: translate(-50%, -50%) rotate(45deg); /* Rotated to form the "X" */
+}
+
+.close::after {
+    transform: translate(-50%, -50%) rotate(-45deg); /* Opposite rotation */
+}
+
+#result {
+    transform-origin: 0 0;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.info-content b {
+    font-size: larger;
+}
