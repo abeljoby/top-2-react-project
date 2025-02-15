@@ -1,5 +1,6 @@
 {
-  "name": "top-2-react-project",
+  "name": "memory-game",
+  "homepage": "https://abel.ist/games/memory",
   "private": true,
   "version": "0.0.0",
   "type": "module",
