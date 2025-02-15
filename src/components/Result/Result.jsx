@@ -6,13 +6,12 @@ function Result({result, over}) {
 
     useEffect(() => {
         if(over) {
-            console.log("OVER!!!")
             const timer = setTimeout(() => {
                 setInfoOpen(true);
             }, 500);
             return () => clearTimeout(timer);
         }
-    }, []);
+    }, [over]);
 
     return (
         <div className={`info ${infoOpen ? 'info-open' : ''}`} id="instructions">

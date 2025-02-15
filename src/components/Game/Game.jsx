@@ -3,9 +3,10 @@ import Card from '../Card/Card'
 import { useState, useEffect } from 'react';
 import Instructions from '../Instructions/Instructions';
 import Result from '../Result/Result';
+import preImage from '/worldIcon.jpg';
 
 function Game() {
-    const winScore = 12;
+    const winScore = 6;
 
     const [score, setScore] = useState(0);
     const [highScore, setHighScore] = useState(0);
@@ -13,15 +14,13 @@ function Game() {
     const [overState, setOverState] = useState(false);
 
     function addScore() {
+        if(score === highScore) {
+            setHighScore(score+1);
+        }
+        setScore(score+1);
         if(score == (winScore - 1)) {
             setWinState(true);
             setOverState(true);
-        }
-        else {
-            if(score === highScore) {
-                setHighScore(score+1);
-            }
-            setScore(score+1);
         }
     }
 
@@ -116,7 +115,6 @@ function Game() {
         for (let c of data) {
             let url = c["urls"]["regular"];
             let name = c["location"]["country"];
-            console.log(name);
             let id = c["id"];
             countries[name] = {"url":url,"id":id,"chosen":false};
         }
@@ -133,7 +131,7 @@ function Game() {
             const data = await response.json();
             loadCountries(data);
           } catch (err) {
-            console.log(err);
+            // console.log(err);
             setError(err.message);
           } finally {
             setLoading(false);
@@ -155,7 +153,7 @@ function Game() {
         <div className="score"><span>High score: {highScore.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}</span><span>Current score: {score.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}</span></div>
         <div className="game">
             {shuffleArray(Object.keys(countries)).slice(0,6).map((country) => (
-                <Card key={country} name={country} url={countries[country]["url"]} pickCard={pickCard} />
+                <Card key={country} name={country} url={countries[country]["url"]} pickCard={pickCard}/>
             ))}
             <Instructions />
             <Result result={winState} over={overState}/>
