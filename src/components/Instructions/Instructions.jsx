@@ -1,15 +1,13 @@
-import React, { useState, useEffect  } from 'react';
+import React, { useEffect } from 'react';
 import './index.css';
 
-function Instructions() {
-    const [infoOpen, setInfoOpen] = useState(false);
-
+const Instructions = React.memo(({ infoOpen, setInfoOpen }) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setInfoOpen(true);
         }, 500);
         return () => clearTimeout(timer);
-    }, []);
+    }, [setInfoOpen]);
 
     return (
         <div className={`info ${infoOpen ? 'info-open' : ''}`} id="instructions">
@@ -23,6 +21,6 @@ function Instructions() {
             </div>
         </div>
     );
-}
+});
 
-export default Instructions
+export default Instructions;
