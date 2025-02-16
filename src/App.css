@@ -76,8 +76,11 @@ header {
   padding: 1em;
 }
 
+
 .logo {
   height: 3em;
+  width: auto;
+  object-fit: cover;
 }
 
 /* section {
@@ -112,3 +115,17 @@ footer {
 span {
   font-size: large;
 }
+
+@media screen and (max-width: 700px) {
+  header {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .hide {
+    display: none;
+  }
+}
+
+

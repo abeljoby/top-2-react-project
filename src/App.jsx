@@ -10,8 +10,8 @@ function App() {
     <>
       <header>
         <a href="https://abel.ist"><img className="logo" src={abelistLogo} alt=""/></a>
-        <h1>/</h1>
-        <h1>Games</h1>
+        <h1 className='hide'>/</h1>
+        <h1 className='hide'>Games</h1>
         <h1>/</h1>
         <h1>Memory Game</h1>
       </header>

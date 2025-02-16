@@ -80,3 +80,41 @@
 .info-content b {
     font-size: larger;
 }
+
+.tip {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 35px; /* Increased size */
+    width: 35px;  /* Increased size */
+    border-radius: 25%; /* Adjusted for better visuals */
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tip:hover {
+    border: #000 2px solid;
+}
+
+.tip:hover svg {
+    filter: invert(1);
+}
+
+.tip svg {
+    border-radius: inherit;
+    height: inherit;
+    width: inherit;
+}
+
+.retry {
+    background-color: #000;
+    padding: 6px;
+    /* filter: invert(1); */
+}
+
+.retry path {
+    color: antiquewhite;
+}
