@@ -1,5 +1,4 @@
 import './index.css'
-import { useState } from 'react';
 
 function Card({name,url,pickCard}) {
 
